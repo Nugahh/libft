@@ -1,0 +1,28 @@
+html, body
+{
+	height: 100vh;
+	margin: 0;
+}
+
+table
+{
+	border-collapse: collapse;
+}
+
+.box
+{
+	display: flex;
+	flex-direction: row;
+	min-width: 100vh;
+}
+
+.box1
+{
+	flex:1;
+	text-align: left;
+	min-height: 100vh;
+	min-width: 100vh;
+}
+
+#Firstname{background-color: aqua;}
+#Lastname{background-color: brown;}
