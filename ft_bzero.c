@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 14:26:08 by fwong             #+#    #+#             */
-/*   Updated: 2022/03/30 14:26:08 by fwong            ###   ########.fr       */
+/*   Created: 2022/03/31 19:57:43 by fwong             #+#    #+#             */
+/*   Updated: 2022/03/31 19:57:43 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
+#include <strings.h>
 #include <stdio.h>
 
-int	ft_isprint(int c)
+void	ft_bzero(void *str, size_t n)
 {
-	if (c >= 1 && c <= 127)
-		return (1);
-	else
-		return (0);
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)str)[i] = '\0';
+		i++;
+	}
 }
-/*
+/* 
 int main()
 {
-    printf("%d\n", isascii(66));
-    printf("%d\n", ft_isascii(66));
+	char a[59] = "abcdef";
+	char b[59] = "abcdef";
+
+	ft_bzero(a, 1);
+	bzero(b, 1);
+
+	printf("%s\n%s\n", a, b);
 } */

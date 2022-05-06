@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 14:26:08 by fwong             #+#    #+#             */
-/*   Updated: 2022/03/30 14:26:08 by fwong            ###   ########.fr       */
+/*   Created: 2022/03/31 00:42:27 by fwong             #+#    #+#             */
+/*   Updated: 2022/03/31 00:42:27 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ctype.h>
 #include <stdio.h>
 
-int	ft_isprint(int c)
+int	ft_toupper(int c)
 {
-	if (c >= 1 && c <= 127)
-		return (1);
-	else
-		return (0);
+	if (c >= 'A' && c <= 'Z')
+		c += 32;
+	return (c);
 }
-/*
+/* 
 int main()
 {
-    printf("%d\n", isascii(66));
-    printf("%d\n", ft_isascii(66));
+    printf("%c\n", toupper('A'));
+    printf("%c\n", ft_toupper('A'));
+	return (0);
 } */

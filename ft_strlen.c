@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 14:26:08 by fwong             #+#    #+#             */
-/*   Updated: 2022/03/30 14:26:08 by fwong            ###   ########.fr       */
+/*   Created: 2022/03/31 00:59:51 by fwong             #+#    #+#             */
+/*   Updated: 2022/03/31 00:59:51 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
+#include <stddef.h>
 #include <stdio.h>
 
-int	ft_isprint(int c)
+size_t	ft_strlen(const char *str)
 {
-	if (c >= 1 && c <= 127)
-		return (1);
-	else
-		return (0);
+	size_t	i;
+
+	i = 0;
+
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }
-/*
-int main()
+
+/* int main()
 {
-    printf("%d\n", isascii(66));
-    printf("%d\n", ft_isascii(66));
+	char a[] = "abcdef";
+
+	printf("%ld\n", ft_strlen(a));
 } */
