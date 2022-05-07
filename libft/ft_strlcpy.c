@@ -5,8 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 20:47:08 by fwong             #+#    #+#             */
-/*   Updated: 2022/03/31 20:47:08 by fwong            ###   ########.fr       */
+/*   Created: 2022/05/07 10:45:02 by fwong             #+#    #+#             */
+/*   Updated: 2022/05/07 10:45:02 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+{
+	unsigned int	i;
+
+	if (!size)
+		return (ft_strlen(src));
+	i = 0;
+	while (src[i] && i < size - 1)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (ft_strlen(src));
+}
+/* 
+int	main()
+{
+	char a[8] = "tototo";
+	char b[8] = "tata";
+
+	printf("%d", ft_strlcpy(b, a, 6));
+} */
