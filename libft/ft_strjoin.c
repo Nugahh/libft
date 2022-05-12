@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 18:17:29 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/08 18:53:18 by fwong            ###   ########.fr       */
+/*   Updated: 2022/05/12 11:40:25 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ char	*ft_strjoin(char const	*s1, char const *s2)
 	ptr[i] = '\0';
 	return (ptr);
 }
-
+/* 
 int main()
 {
 	char a[10] = "toto";
 	char b[10] = "tata";
 
 	printf("%s", ft_strjoin(a,b));
-}
+} */
