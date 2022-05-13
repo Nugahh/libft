@@ -1,38 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 19:53:03 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/07 14:38:34 by fwong            ###   ########.fr       */
+/*   Created: 2022/05/07 14:39:15 by fwong             #+#    #+#             */
+/*   Updated: 2022/05/07 15:26:11 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stddef.h>
 #include <stdio.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 {
 	size_t	i;
+	size_t	j;
 
 	i = 0;
-	while (i < n)
+	j = 0;
+	if (s2[j] == '\0')
+		return ((char *)s1);
+	while (i < len)
 	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		while (s1[i + j] == s2[j])
+		{
+			j++;
+			if (s2[j] == '\0')
+				return ((char *)s1 + i);
+		}
 		i++;
+		j = 0;
 	}
-	return (dest);
+	return (0);
 }
 /* 
-int main()
+int	main()
 {
-	char a[50] = "Je pue la merdee";
-	char b[50] = "Je pue la merde et toi";
+	char a[50] = "bonjouir je suis toto";
+	char b[50] = "ui";
 
-	// ft_memcpy(a, b, 6);
-	memmove(a, b, 20);
-	// memcpy(a, b, 20);
-	printf("%s\n", a);
+	printf("%s", ft_strnstr(a, b, 20));
 } */

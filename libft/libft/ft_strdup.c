@@ -1,17 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 19:53:03 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/07 14:38:34 by fwong            ###   ########.fr       */
+/*   Created: 2022/05/07 15:44:13 by fwong             #+#    #+#             */
+/*   Updated: 2022/05/07 15:55:17 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
@@ -25,14 +38,25 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-/* 
-int main()
-{
-	char a[50] = "Je pue la merdee";
-	char b[50] = "Je pue la merde et toi";
 
-	// ft_memcpy(a, b, 6);
-	memmove(a, b, 20);
-	// memcpy(a, b, 20);
-	printf("%s\n", a);
+char	*ft_strdup(const char *s)
+{
+	size_t	len;
+	char	*copy;
+
+	len = ft_strlen(s) + 1;
+	copy = malloc(len);
+	if (!copy)
+		return (NULL);
+	ft_memcpy(copy, s, len);
+	return (copy);
+}
+/* 
+int main() 
+{
+   char str[] = "Kelly&Genny";
+   char *result;
+   result = ft_strdup(str);
+   printf("The string : %s\n", result);
+   return 0;
 } */

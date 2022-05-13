@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 19:53:03 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/07 14:38:34 by fwong            ###   ########.fr       */
+/*   Created: 2022/05/07 14:00:44 by fwong             #+#    #+#             */
+/*   Updated: 2022/05/07 14:38:46 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdio.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t	i;
 
 	i = 0;
 	while (i < n)
 	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		if (((unsigned char *)s)[i] == (unsigned char)c)
+		{
+			return ((char *)(s + i));
+		}
 		i++;
 	}
-	return (dest);
+	return (0);
 }
 /* 
-int main()
+int	main()
 {
-	char a[50] = "Je pue la merdee";
-	char b[50] = "Je pue la merde et toi";
-
-	// ft_memcpy(a, b, 6);
-	memmove(a, b, 20);
-	// memcpy(a, b, 20);
-	printf("%s\n", a);
+	char a[50] = "bonjour";
+	
+	char * b = memchr(a, 'j', 8);
+	
+	printf("%s", b);
 } */

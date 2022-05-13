@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 19:53:03 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/07 14:38:34 by fwong            ###   ########.fr       */
+/*   Created: 2022/05/07 10:22:45 by fwong             #+#    #+#             */
+/*   Updated: 2022/05/12 15:21:34 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdio.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (i < n)
+	if (dest < src)
 	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-		i++;
+		while (n--)
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			i++;
+		}
+	}
+	else
+	{
+		while (n--)
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			i--;
 	}
 	return (dest);
 }
@@ -32,7 +41,7 @@ int main()
 	char b[50] = "Je pue la merde et toi";
 
 	// ft_memcpy(a, b, 6);
-	memmove(a, b, 20);
+	ft_memmove(a, b, 20);
 	// memcpy(a, b, 20);
 	printf("%s\n", a);
 } */

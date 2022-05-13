@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 19:53:03 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/07 14:38:34 by fwong            ###   ########.fr       */
+/*   Created: 2022/05/08 18:04:01 by fwong             #+#    #+#             */
+/*   Updated: 2022/05/12 18:15:04 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
+	char	*dlen;
 
+	dlen = malloc(sizeof(len + 1));
+	if (!dlen)
+		return (NULL);
 	i = 0;
-	while (i < n)
+	while (i < len)
 	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		dlen[i] = s[i + start];
 		i++;
 	}
-	return (dest);
+	dlen[i] = '\0';
+	return (dlen);
 }
 /* 
 int main()
 {
-	char a[50] = "Je pue la merdee";
-	char b[50] = "Je pue la merde et toi";
+	char a[50] = "bonjour";
 
-	// ft_memcpy(a, b, 6);
-	memmove(a, b, 20);
-	// memcpy(a, b, 20);
-	printf("%s\n", a);
+	printf("%s", ft_substr(a, 3, 3));
 } */

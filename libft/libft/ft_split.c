@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 19:53:03 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/07 14:38:34 by fwong            ###   ########.fr       */
+/*   Created: 2022/05/12 19:57:45 by fwong             #+#    #+#             */
+/*   Updated: 2022/05/12 20:06:26 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	**ft_split(char const *s, char c)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-		i++;
-	}
-	return (dest);
+	
 }
-/* 
 int main()
 {
-	char a[50] = "Je pue la merdee";
-	char b[50] = "Je pue la merde et toi";
+	char a[] = "bonjour je suis machin et j'aime la pomme";
 
-	// ft_memcpy(a, b, 6);
-	memmove(a, b, 20);
-	// memcpy(a, b, 20);
-	printf("%s\n", a);
-} */
+	printf("%d", split(a, ' '));
+}
