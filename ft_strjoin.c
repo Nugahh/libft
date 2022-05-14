@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 18:17:29 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/12 11:40:25 by fwong            ###   ########.fr       */
+/*   Updated: 2022/05/13 19:47:25 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ size_t	ft_strlen(const char *str)
 
 char	*ft_strjoin(char const	*s1, char const *s2)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	size_t	dlen;
 	size_t	slen;
-	char * ptr;
+	char	*ptr;
 
 	dlen = ft_strlen(s1);
 	slen = ft_strlen(s2);
@@ -41,15 +41,12 @@ char	*ft_strjoin(char const	*s1, char const *s2)
 	i = 0;
 	while (s1[i])
 	{
-		ptr[i] = s1[i];
-		i++;
+		ptr[i++] = s1[i++];
 	}
 	j = 0;
 	while (s2[j])
 	{
-		ptr[i] = s2[j];
-		i++;
-		j++;
+		ptr[i++] = s2[j++];
 	}
 	ptr[i] = '\0';
 	return (ptr);
