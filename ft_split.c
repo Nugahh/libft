@@ -6,15 +6,52 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 19:57:45 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/14 20:27:55 by fwong            ###   ########.fr       */
+/*   Updated: 2022/05/13 21:39:40 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 
-int	ft_count_char(char const *str, char c)
+int	ft_count_char(char *str, char c)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			i++;
+		else
+		{
+			i++;
+			j++;
+		}
+	}
+	return (j);
+}
+
+int	ft_count_words(char *str, char c)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 1;
+	while (str[i] == c)
+		i++;
+	while (str[i])
+	{
+		if (str[i] == c && str[i + 1] != c)
+			j++;
+		i++;
+	}
+	return (j);
+}
+
+/* char	*ft_without_separator(char *str, char c)
 {
 	int	i;
 	int	j;
@@ -23,92 +60,73 @@ int	ft_count_char(char const *str, char c)
 	j = 0;
 	while (str[i] == c)
 		i++;
-	while (str[i] != c)
-	{
-		i++;
-		j++;
-	}
-	return (j);
-}
-
-int	ft_count_words(char const *str, char c)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		if (str[i] == c)
 			i++;
 		else
 		{
-			count++;
-			while (str[i] != '\0' && str[i] != c)
-				i++;
+			return str[i];
+			i++;
 		}
 	}
-	return (count);
-}
+	return (str);
+} */
 
-char	*ft_fill(char *s1, char const *s2, int i, int c)
+char	*ft_fill(char *str, int c)
 {
-	while (s2[i] && s2[i] != c)
+	int	i;
+	int	j;
+	char	*word;
+
+	i = 0;
+	j = 0;
+	while (word[i])
 	{
-		s1[i] = s2[i];
-		i++;
+		if (str[i] && str[i] == c)
+			i++;
+		else
+		{
+			tab[i][j] = str[i];	
+		}
 	}
-	return (s1);
+	return (word);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	// int		i;
+	int		i;
 	int		j;
-	size_t	wordCount;
-	size_t	charCount;
+	size_t		wordCount;
+	size_t		charCount;
 	char	**tab;
 	
-	wordCount = ft_count_words(s, c);
-	tab = malloc(sizeof(char *) * wordCount + 1);
+	wordCount = ft_count_separator(s, c);
+	tab = malloc(sizeof(char *) * ft_count_separator((char *)s, c));
 	if (!tab)
 		return (NULL);
-	// i = 0;
+	i = 0;
 	j = 0;
-	printf("%d\n", j);
 	while (wordCount--)
 	{
+		while (s[j] == c)
+			j++;
 		charCount = ft_count_char(s + j, c);
-		printf("%d\n", j);
-		/* tab[i] = malloc(sizeof(char) * charCount + 1);
-		if (!tab[i])
-			return (NULL);
-		ft_fill(tab[i], s, j, c);
-		i++; */
-		s += charCount;
+		tab[i] = (char) malloc(sizeof(char) * charCount);
+		i++;
+		while (s[j] != c)
+			j++;
 	}
+	tab = ft_fill(s, c);
 	return (tab);
 }
 
-int    main(int ac, char **av)
+int main()
 {
-   int    i;
-   char    **tbl;
+	char a[] = "Bonjour je nnn  ds  ds";
 
-   (void) ac;
-   tbl = ft_split(av[1], av[2][0]);    
-   i = 0;
-   while (tbl[i])
-   {
-       printf("%d = %s\n", i, tbl[i]);
-       i++;
-   }
-   return (0);
+	// ft_split(a, '/');
+	
+	// printf("%d", ft_count_separator(a, ' '));
+	printf("%s", a + 2);
 }
-
-/* int main()
-{
-	char a[] = "salut/les/amis";
-	printf("%s", a);
-} */
