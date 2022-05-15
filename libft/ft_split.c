@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 19:57:45 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/13 21:39:40 by fwong            ###   ########.fr       */
+/*   Updated: 2022/05/15 11:52:05 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,11 @@
 int	ft_count_char(char *str, char c)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
+	while (str[i] && str[i] != c)
 			i++;
-		else
-		{
-			i++;
-			j++;
-		}
-	}
-	return (j);
+	return (i);
 }
 
 int	ft_count_words(char *str, char c)
@@ -51,46 +41,27 @@ int	ft_count_words(char *str, char c)
 	return (j);
 }
 
-/* char	*ft_without_separator(char *str, char c)
+char	*ft_malloc_and_fill(char *s, int c, int wordCount)
 {
 	int	i;
 	int	j;
+	char	*str;
+	size_t	charCount;
 
 	i = 0;
 	j = 0;
-	while (str[i] == c)
+	while (wordCount--)
+	{
+		while (s[j] == c)
+			j++;
+		charCount = ft_count_char(s + j, c);
+		str[i] = malloc(sizeof(char) * charCount + 1);
+		printf("%d\n", j);
+
+		j = charCount + j;
+		printf("%d\n", j);
 		i++;
-	while (str[i])
-	{
-		if (str[i] == c)
-			i++;
-		else
-		{
-			return str[i];
-			i++;
-		}
 	}
-	return (str);
-} */
-
-char	*ft_fill(char *str, int c)
-{
-	int	i;
-	int	j;
-	char	*word;
-
-	i = 0;
-	j = 0;
-	while (word[i])
-	{
-		if (str[i] && str[i] == c)
-			i++;
-		else
-		{
-			tab[i][j] = str[i];	
-		}
-	}
-	return (word);
 }
 
 char	**ft_split(char const *s, char c)
@@ -101,8 +72,8 @@ char	**ft_split(char const *s, char c)
 	size_t		charCount;
 	char	**tab;
 	
-	wordCount = ft_count_separator(s, c);
-	tab = malloc(sizeof(char *) * ft_count_separator((char *)s, c));
+	wordCount = ft_count_words(s, c);
+	tab = malloc(sizeof(char *) * ft_count_words((char *)s, c));
 	if (!tab)
 		return (NULL);
 	i = 0;
