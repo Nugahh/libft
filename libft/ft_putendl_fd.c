@@ -1,46 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/22 18:16:38 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/22 20:17:55 by fwong            ###   ########.fr       */
+/*   Created: 2022/05/22 20:08:04 by fwong             #+#    #+#             */
+/*   Updated: 2022/05/22 20:18:05 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	ft_putendl_fd(char *s, int fd)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	if (!s || !f)
-		return ;
 	while (s[i])
 	{
-		f(i, s + i);
+		write(fd, &s[i], 1);
 		i++;
 	}
+	write(fd, '\n', 1);
 }
-/* 
-void	f_iter(unsigned int i, char *c)
-{
-	while (c[i])
-	{
-		c[i] += 1;
-		i++;
-	}
-}
-
-#include <stdio.h>
-
-int main()
-{
-    char str1[] = "abc";
-    ft_striteri(str1, *f_iter);
-    printf("%s\n", str1);
-} */

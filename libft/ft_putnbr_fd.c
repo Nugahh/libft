@@ -1,53 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/15 21:38:27 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/22 20:19:35 by fwong            ###   ########.fr       */
+/*   Created: 2022/05/22 20:10:52 by fwong             #+#    #+#             */
+/*   Updated: 2022/05/22 20:17:40 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <unistd.h>
 #include <stdio.h>
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_putnbr_fd(int n, int fd)
 {
-	int		i;
-	int		j;
-	char	*str;
+	long	a;
+	long	b;
 
-	i = 0;
-	if (!s)
-		return (NULL);
-	while (s[i])
-		i++;
-	str = malloc(sizeof(char) * (i + 1));
-	j = 0;
-	while (s[j])
+	a = n;
+	if (a < 0)
 	{
-		str[j] = f(j, s[j]);
-		j++;
+		write(fd, "-", 1);
+		a *= -1;
 	}
-	return (str);
+	if (a >= 0 && a <= 9)
+	{
+		b = '0' + a;
+		write(fd, &b, 1);
+	}
+	else
+	{
+		ft_putnbr_fd(a / 10, fd);
+		ft_putnbr_fd(a % 10, fd);
+	}
 }
 /* 
-char	f_iter(unsigned int i, char c)
-{
-	i = 1;
-	char	str;
-    str = c + i;
-    return (str);
-}
-
-#include <stdio.h>
-
 int main()
 {
-    char str1[] = "abc";
-    char* str2;
-    str2 = ft_strmapi(str1, *f_iter);
-    printf("%s\n", str2);
+	ft_putnbr_fd(-546, 1);
 } */

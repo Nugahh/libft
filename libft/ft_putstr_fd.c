@@ -1,53 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/15 21:38:27 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/22 20:19:35 by fwong            ###   ########.fr       */
+/*   Created: 2022/05/22 20:02:46 by fwong             #+#    #+#             */
+/*   Updated: 2022/05/22 20:07:52 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_putstr_fd(char *s, int fd)
 {
-	int		i;
-	int		j;
-	char	*str;
+	int	i;
 
 	i = 0;
-	if (!s)
-		return (NULL);
 	while (s[i])
-		i++;
-	str = malloc(sizeof(char) * (i + 1));
-	j = 0;
-	while (s[j])
 	{
-		str[j] = f(j, s[j]);
-		j++;
+		write(fd, &s[i], 1);
+		i++;
 	}
-	return (str);
 }
 /* 
-char	f_iter(unsigned int i, char c)
-{
-	i = 1;
-	char	str;
-    str = c + i;
-    return (str);
-}
-
-#include <stdio.h>
-
 int main()
 {
-    char str1[] = "abc";
-    char* str2;
-    str2 = ft_strmapi(str1, *f_iter);
-    printf("%s\n", str2);
+	char a[50] = "abcdef";
+	ft_putstr_fd(a, 1);
 } */

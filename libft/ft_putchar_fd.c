@@ -1,46 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/22 18:16:38 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/22 20:17:55 by fwong            ###   ########.fr       */
+/*   Created: 2022/05/22 19:53:51 by fwong             #+#    #+#             */
+/*   Updated: 2022/05/22 19:56:51 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	ft_putchar_fd(char c, int fd)
 {
-	int		i;
-
-	i = 0;
-	if (!s || !f)
-		return ;
-	while (s[i])
-	{
-		f(i, s + i);
-		i++;
-	}
-}
-/* 
-void	f_iter(unsigned int i, char *c)
-{
-	while (c[i])
-	{
-		c[i] += 1;
-		i++;
-	}
+	write(fd, &c, 1);
 }
 
-#include <stdio.h>
-
-int main()
+/* int main()
 {
-    char str1[] = "abc";
-    ft_striteri(str1, *f_iter);
-    printf("%s\n", str1);
+	ft_putchar_fd('c', 1);
 } */
