@@ -5,95 +5,107 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 19:57:45 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/22 17:57:54 by fwong            ###   ########.fr       */
+/*   Created: 2022/05/22 18:06:25 by fwong             #+#    #+#             */
+/*   Updated: 2022/05/22 18:06:49 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-int	ft_count_char(char const*str, char c, int index)
+static int	ft_count_words(char const *str, char c)
 {
 	int	i;
+	int	count;
 
 	i = 0;
-	while (str[i])
+	count = 0;
+	while (str[i] != '\0')
 	{
-		if (str[i] != c)
+		if (str[i] == c)
 			i++;
 		else
-			return (0);
+		{
+			count++;
+			while (str[i] && str[i] != c)
+				i++;
+		}
 	}
-	return (i);
+	return (count);
 }
 
-int	ft_count_words(char const*str, char c)
+static char	*ft_putword(char *word, char const *s, int i, int word_len)
 {
-	int	i;
 	int	j;
 
-	i = 0;
-	j = 1;
-	while (str[i] == c)
-		i++;
-	while (str[i])
+	j = 0;
+	while (word_len > 0)
 	{
-		if (str[i] == c && str[i + 1] != c)
-			j++;
-		i++;
+		word[j] = s[i - word_len];
+		j++;
+		word_len--;
 	}
-	return (j);
+	word[j] = '\0';
+	return (word);
 }
 
-char	*ft_malloc_and_fill(char const *s, char c, int word_count)
+static char	**ft_split_words(char const *s, char c, char **s2, int num_words)
 {
-	int		index;
-	int		j;
-	int		k;
-	char	*str;
-	size_t	char_count;
+	int	i;
+	int	word;
+	int	word_len;
 
-	index = 0;
-	j = 0;
-	while (word_count--)
+	i = 0;
+	word = 0;
+	word_len = 0;
+	while (word < num_words)
 	{
-		while (s[j] == c)
-			index++;
-		char_count = ft_count_char(s, c, index);
-		str = malloc(sizeof(char) * char_count + 1);
-		if (!str)
-			return (NULL);
-		printf("%ld\n", char_count);
-		k = char_count + j;
-		while (index < k)
+		while (s[i] && s[i] == c)
+			i++;
+		while (s[i] && s[i] != c)
 		{
-			str[index++] = s[j++];
+			i++;
+			word_len++;
 		}
-		index = 0;
-		index++;
+		s2[word] = (char *)malloc(sizeof(char) * (word_len + 1));
+		if (!s2)
+			return (0);
+		ft_putword(s2[word], s, i, word_len);
+		word_len = 0;
+		word++;
 	}
+	s2[word] = 0;
+	return (s2);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int			i;
-	int			j;
-	size_t		word_count;
-	char		**tab;
+	char			**s2;
+	unsigned int	num_words;
 
-	word_count = ft_count_words(s, c);
-	tab = malloc(sizeof(char *) * ft_count_words((char *)s, c));
-	if (!tab)
-		return (NULL);
-	printf("caca\n");
-	ft_malloc_and_fill(s, c, word_count);
-	return (tab);
+	if (!s)
+		return (0);
+	num_words = ft_count_words(s, c);
+	s2 = (char **)malloc(sizeof(char *) * (num_words + 1));
+	if (!s2)
+		return (0);
+	ft_split_words(s, c, s2, num_words);
+	return (s2);
 }
 /* 
-int main()
-{
-	char a[] = "Bonjour je nnn  ds  ds";
+#include <stdio.h>
 
-	ft_split(a, ' ');
+int    main(int ac, char **av)
+{
+   int    i;
+   char    **tbl;
+
+   (void) ac;
+   tbl = ft_split(av[1], av[2][0]);    
+   i = 0;
+   while (tbl[i])
+   {
+       printf("%d = %s\n", i, tbl[i]);
+       i++;
+   }
+   return (0);
 } */
