@@ -1,45 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/15 21:38:27 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/22 19:46:15 by fwong            ###   ########.fr       */
+/*   Created: 2022/05/22 18:16:38 by fwong             #+#    #+#             */
+/*   Updated: 2022/05/22 19:49:29 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	int		i;
-	int		j;
-	char	*str;
 
 	i = 0;
-	if (!s)
-		return (NULL);
+	if (!s || !f)
+		return;
 	while (s[i])
-		i++;
-	str = malloc(sizeof(char) * (i + 1));
-	j = 0;
-	while (s[j])
 	{
-		str[j] = f(j, s[j]);
-		j++;
+		f(i, s + i);
+		i++;
 	}
-	return (str);
 }
-
-char	f_iter(unsigned int i, char c)
+/* 
+void	f_iter(unsigned int i, char *c)
 {
-	i = 1;
-	char	str;
-    str = c + i;
-    return (str);
+	while (c[i])
+	{
+		c[i] += 1;
+		i++;
+	}
 }
 
 #include <stdio.h>
@@ -47,7 +41,6 @@ char	f_iter(unsigned int i, char c)
 int main()
 {
     char str1[] = "abc";
-    char* str2;
-    str2 = ft_strmapi(str1, *f_iter);
-    printf("%s\n", str2);
-}
+    ft_striteri(str1, *f_iter);
+    printf("%s\n", str1);
+} */
