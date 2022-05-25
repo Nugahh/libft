@@ -6,13 +6,11 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 19:27:31 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/06 19:52:40 by fwong            ###   ########.fr       */
+/*   Updated: 2022/05/25 17:22:46 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <string.h>
-#include <stdio.h>
+#include "libft.h"
 
 void	*ft_memset(void *s, int c, size_t n)
 {

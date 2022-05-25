@@ -6,12 +6,11 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 14:28:24 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/07 14:38:08 by fwong            ###   ########.fr       */
+/*   Updated: 2022/05/25 17:22:38 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
+#include "libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

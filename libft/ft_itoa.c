@@ -6,24 +6,22 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:29:20 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/22 17:38:55 by fwong            ###   ########.fr       */
+/*   Updated: 2022/05/25 19:10:48 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-int	ft_strlen(int c)
+long	ft_intlen(int c)
 {
 	int			i;
 	long long	nb;
 
 	nb = c;
 	i = 0;
-	if (nb < 0)
+	if (nb <= 0)
 	{
-		nb *= -1;
-		i++;
+		i = 1;
 	}
 	while (nb != 0)
 	{
@@ -40,10 +38,10 @@ char	*ft_itoa(int n)
 	char		*str;
 
 	a = n;
-	str = malloc(sizeof(char) * (ft_strlen(a) + 1));
+	str = malloc(sizeof(char) * (ft_intlen(a) + 1));
 	if (!str)
 		return (NULL);
-	i = ft_strlen(a);
+	i = ft_intlen(a);
 	str[i] = '\0';
 	i--;
 	if (a == 0)
@@ -55,9 +53,8 @@ char	*ft_itoa(int n)
 	}
 	while (a > 0)
 	{
-			str[i] = '0' + (a % 10);
+			str[i--] = '0' + (a % 10);
 			a /= 10;
-			i--;
 	}
 	return (str);
 }

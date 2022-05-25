@@ -6,13 +6,11 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 20:02:46 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/22 20:07:52 by fwong            ###   ########.fr       */
+/*   Updated: 2022/05/25 17:22:55 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {

@@ -6,39 +6,30 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 11:35:24 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/07 11:47:51 by fwong            ###   ########.fr       */
+/*   Updated: 2022/05/25 18:06:08 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	char	*temp;
 
-	i = ft_strlen(s);
-	while (i > 0)
+	temp = NULL;
+	if (!s)
+		return (temp);
+	if (c == 0)
+		return ((char *)(s + ft_strlen(s)));
+	while (*s)
 	{
-		if (s[i] == (unsigned char)c)
-		{
-			return ((char *)(s + i));
-		}
-		i--;
+		if (*s == (char)c)
+			temp = (char *)s;
+		s++;
 	}
-	return (0);
+	if (*s == (char)c)
+		return ((char *)s);
+	return (temp);
 }
 /* 
 int main()

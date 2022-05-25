@@ -6,13 +6,11 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 20:10:52 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/22 20:17:40 by fwong            ###   ########.fr       */
+/*   Updated: 2022/05/25 17:22:53 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
+#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
