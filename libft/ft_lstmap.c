@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/07 14:39:15 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/27 00:33:33 by fwong            ###   ########.fr       */
+/*   Created: 2022/05/27 04:49:48 by fwong             #+#    #+#             */
+/*   Updated: 2022/05/27 04:51:33 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void))
 {
-	size_t	i;
-	size_t	j;
+	t_list	*new;
+	t_list	*save;
+	t_list	*tmp;
 
-	i = 0;
-	if (!s1 || !*s2)
-		return ((char *)s1);
-	while (s1[i] && i < len)
+	if (!f || !lst)
+		return (0);
+	new = ft_lstnew(f(lst->content));
+	if (!new)
+		return (0);
+	save = new;
+	lst = lst->next;
+	while (lst)
 	{
-		j = 0;
-		while (s1[i + j] == s2[j] && (i + j) < len)
+		tmp = ft_lstnew(f(lst->content));
+		if (!tmp)
 		{
-			if (s2[j + 1] == '\0')
-				return ((char *)&s1[i]);
-			j++;
+			ft_lstclear(&new, del);
+			return (0);
 		}
-		i++;
+		save->next = tmp;
+		save = tmp;
+		lst = lst->next;
 	}
-	return (NULL);
+	return (new);
 }
-/* 
-int	main()
-{
-	char a[50] = "bonjouir je suis toto";
-	char b[50] = "ui";
-
-	printf("%s", ft_strnstr(a, b, 20));
-} */

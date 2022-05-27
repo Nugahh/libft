@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fwong <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: fwong <fwong@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/25 15:53:23 by fwong             #+#    #+#              #
-#    Updated: 2022/05/25 19:17:51 by fwong            ###   ########.fr        #
+#    Updated: 2022/05/27 03:45:07 by fwong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,11 @@ SRCS	= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c\
 
 OBJS	= ${SRCS:.c=.o}
 
+BONUS = ft_lstadd_front.c	ft_lstdelone.c	ft_lstlast.c	ft_lstnew.c\
+		ft_lstadd_back.c	ft_lstclear.c	ft_lstiter.c	ft_lstmap.c	ft_lstsize.c\
+
+Bonus_OBJS = ${BONUS:.c=.o}
+
 CC	= gcc
 
 CFLAGS	= -Wall -Werror -Wextra
@@ -33,6 +38,9 @@ all: ${NAME}
 
 ${NAME}: ${OBJS}
 	ar rcs ${NAME} ${OBJS}
+
+bonus:	${Bonus_OBJS}
+	ar rcs ${NAME} ${Bonus_OBJS}
 
 clean:
 	rm -f ${OBJS}
