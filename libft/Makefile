@@ -6,7 +6,7 @@
 #    By: fwong <fwong@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/25 15:53:23 by fwong             #+#    #+#              #
-#    Updated: 2022/05/27 03:45:07 by fwong            ###   ########.fr        #
+#    Updated: 2022/05/31 16:31:28 by fwong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,12 +43,12 @@ bonus:	${Bonus_OBJS}
 	ar rcs ${NAME} ${Bonus_OBJS}
 
 clean:
-	rm -f ${OBJS}
+	rm -f ${OBJS} ${Bonus_OBJS}
 
 fclean: clean
 	rm -f ${NAME}
 
-re:	fclean all
+re:		fclean all
 
 .PHONY: all clean fclean re
 
