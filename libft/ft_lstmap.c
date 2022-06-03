@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 04:49:48 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/31 19:13:46 by fwong            ###   ########.fr       */
+/*   Updated: 2022/06/03 16:59:31 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,20 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void))
 		lst = lst->next;
 	}
 	return (new);
-}
- */
+} */
+
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new;
+	t_list	*tmp;
 
 	if (!f || !lst)
 		return (0);
+	new = NULL;
 	while (lst)
 	{
-		new = ft_lstnew(f(lst->content));
-		if (!new)
+		tmp = ft_lstnew((*f)(lst->content));
+		if (!tmp)
 		{
 			ft_lstclear(&new, del);
 			return (0);
@@ -59,7 +61,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (new);
 }
-
+/* 
 #include <stdio.h>
 #include <string.h>
 
@@ -93,4 +95,4 @@ int main (int ac, char **av)
       new_list = ft_lstmap(base_list, ft_cpy,free);
     ft_lstiter(base_list, ft_print);
     ft_lstiter(new_list, ft_print);
-}
+} */
