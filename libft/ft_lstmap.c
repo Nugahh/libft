@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 04:49:48 by fwong             #+#    #+#             */
-/*   Updated: 2022/06/03 16:59:31 by fwong            ###   ########.fr       */
+/*   Updated: 2022/06/04 13:37:19 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 			ft_lstclear(&new, del);
 			return (0);
 		}
-		ft_lstadd_back(&lst, new);
+		ft_lstadd_back(&new, tmp);
 		lst = lst->next;
 	}
 	return (new);
