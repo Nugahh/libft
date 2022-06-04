@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 04:35:29 by fwong             #+#    #+#             */
-/*   Updated: 2022/05/27 17:53:26 by fwong            ###   ########.fr       */
+/*   Updated: 2022/06/04 18:08:33 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (*lst == NULL)
 		*lst = new;
 	else
-	ft_lstlast(*lst)->next = new;
+		ft_lstlast(*lst)->next = new;
 }
 /* 
 #include <stdio.h>
