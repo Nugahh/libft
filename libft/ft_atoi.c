@@ -41,6 +41,7 @@ int	ft_atoi(const char *str)
 	}
 	return (nb * neg);
 }
+
 /* 
 int	main()
 {
